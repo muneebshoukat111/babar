@@ -18,8 +18,10 @@ export default function AnimatedBackground({ className = "" }: AnimatedBackgroun
 
     // Set canvas dimensions
     const resizeCanvas = () => {
-      canvas.width = window.innerWidth
-      canvas.height = window.innerHeight
+      if (canvas) {
+        canvas.width = window.innerWidth
+        canvas.height = window.innerHeight
+      }
     }
 
     resizeCanvas()
@@ -54,10 +56,12 @@ export default function AnimatedBackground({ className = "" }: AnimatedBackgroun
       }
 
       draw() {
-        ctx.fillStyle = this.color
-        ctx.beginPath()
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2)
-        ctx.fill()
+        if (ctx) {
+          ctx.fillStyle = this.color
+          ctx.beginPath()
+          ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2)
+          ctx.fill()
+        }
       }
     }
 
@@ -70,22 +74,28 @@ export default function AnimatedBackground({ className = "" }: AnimatedBackgroun
     }
 
     // Animation loop
+    let animationFrameId: number
+
     const animate = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height)
+      if (ctx && canvas) {
+        ctx.clearRect(0, 0, canvas.width, canvas.height)
 
-      for (let i = 0; i < particlesArray.length; i++) {
-        particlesArray[i].update()
-        particlesArray[i].draw()
+        for (let i = 0; i < particlesArray.length; i++) {
+          particlesArray[i].update()
+          particlesArray[i].draw()
+        }
+
+        // Draw connections
+        connectParticles()
+
+        animationFrameId = requestAnimationFrame(animate)
       }
-
-      // Draw connections
-      connectParticles()
-
-      requestAnimationFrame(animate)
     }
 
     // Connect particles with lines
     const connectParticles = () => {
+      if (!ctx) return
+
       for (let a = 0; a < particlesArray.length; a++) {
         for (let b = a; b < particlesArray.length; b++) {
           const dx = particlesArray[a].x - particlesArray[b].x
@@ -108,6 +118,7 @@ export default function AnimatedBackground({ className = "" }: AnimatedBackgroun
 
     return () => {
       window.removeEventListener("resize", resizeCanvas)
+      cancelAnimationFrame(animationFrameId)
     }
   }, [])
 

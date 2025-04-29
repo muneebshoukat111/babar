@@ -12,7 +12,15 @@ const nextConfig = {
   images: {
     domains: ["placeholder.com"],
     unoptimized: true,
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "**",
+      },
+    ],
   },
+  // Ensure static assets are properly included
+  assetPrefix: process.env.NODE_ENV === "production" ? "/" : "",
 }
 
 module.exports = nextConfig

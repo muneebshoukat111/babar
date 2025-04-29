@@ -3,11 +3,78 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { BookOpen, FileText, GraduationCap, Mail, MessageSquare, PenTool } from "lucide-react"
 import Link from "next/link"
-import Image from "next/image"
 import ContactForm from "@/components/contact-form"
 import ResearchMaterials from "@/components/research-materials"
 import ServiceCard from "@/components/service-card"
 import AnimatedBackground from "@/components/animated-background"
+
+// Define static image paths
+const PROFILE_IMAGE = "/placeholder.svg?height=550&width=550&text=Babar+Ali"
+const CONTACT_IMAGE = "/placeholder.svg?height=200&width=600&text=Contact+Babar+Ali"
+
+// Define research materials with static image paths
+const academicMaterials = [
+  {
+    title: "Research Methodology Guide",
+    description: "Comprehensive guide to research methodologies for academic projects",
+    link: "#",
+    image: "/placeholder.svg?height=200&width=400&text=Research+Methodology",
+  },
+  {
+    title: "Academic Writing Standards",
+    description: "Guidelines for academic writing across different disciplines",
+    link: "#",
+    image: "/placeholder.svg?height=200&width=400&text=Academic+Writing",
+  },
+  {
+    title: "Data Analysis Techniques",
+    description: "Overview of quantitative and qualitative data analysis methods",
+    link: "#",
+    image: "/placeholder.svg?height=200&width=400&text=Data+Analysis",
+  },
+]
+
+const technicalMaterials = [
+  {
+    title: "Technical Documentation Templates",
+    description: "Templates for creating effective technical documentation",
+    link: "#",
+    image: "/placeholder.svg?height=200&width=400&text=Technical+Documentation",
+  },
+  {
+    title: "API Documentation Guide",
+    description: "Best practices for documenting APIs and technical interfaces",
+    link: "#",
+    image: "/placeholder.svg?height=200&width=400&text=API+Documentation",
+  },
+  {
+    title: "Technical Writing Style Guide",
+    description: "Style guidelines for clear and concise technical writing",
+    link: "#",
+    image: "/placeholder.svg?height=200&width=400&text=Technical+Writing",
+  },
+]
+
+const generalMaterials = [
+  {
+    title: "Content Creation Strategies",
+    description: "Effective strategies for creating engaging content",
+    link: "#",
+    image: "/placeholder.svg?height=200&width=400&text=Content+Creation",
+  },
+  {
+    title: "Writing for Different Audiences",
+    description: "Guide to adapting writing style for various audiences",
+    link: "#",
+    image: "/placeholder.svg?height=200&width=400&text=Writing+Audiences",
+  },
+  {
+    title: "Editing and Proofreading Checklist",
+    description: "Comprehensive checklist for polishing written content",
+    link: "#",
+    image: "/placeholder.svg?height=200&width=400&text=Editing+Proofreading",
+  },
+]
 
 export default function Home() {
   return (
@@ -76,13 +143,7 @@ export default function Home() {
                 </div>
               </div>
               <div className="relative mx-auto aspect-square w-full max-w-[450px] overflow-hidden rounded-full border-8 border-background shadow-xl lg:order-last">
-                <Image
-                  src="/placeholder.svg?height=550&width=550"
-                  alt="Babar Ali"
-                  fill
-                  className="object-cover"
-                  priority
-                />
+                <img src={PROFILE_IMAGE || "/placeholder.svg"} alt="Babar Ali" className="h-full w-full object-cover" />
               </div>
             </div>
           </div>
@@ -152,79 +213,13 @@ export default function Home() {
                   <TabsTrigger value="general">General</TabsTrigger>
                 </TabsList>
                 <TabsContent value="academic" className="mt-6">
-                  <ResearchMaterials
-                    category="academic"
-                    materials={[
-                      {
-                        title: "Research Methodology Guide",
-                        description: "Comprehensive guide to research methodologies for academic projects",
-                        link: "#",
-                        image: "/placeholder.svg?height=200&width=400&text=Research+Methodology",
-                      },
-                      {
-                        title: "Academic Writing Standards",
-                        description: "Guidelines for academic writing across different disciplines",
-                        link: "#",
-                        image: "/placeholder.svg?height=200&width=400&text=Academic+Writing",
-                      },
-                      {
-                        title: "Data Analysis Techniques",
-                        description: "Overview of quantitative and qualitative data analysis methods",
-                        link: "#",
-                        image: "/placeholder.svg?height=200&width=400&text=Data+Analysis",
-                      },
-                    ]}
-                  />
+                  <ResearchMaterials category="academic" materials={academicMaterials} />
                 </TabsContent>
                 <TabsContent value="technical" className="mt-6">
-                  <ResearchMaterials
-                    category="technical"
-                    materials={[
-                      {
-                        title: "Technical Documentation Templates",
-                        description: "Templates for creating effective technical documentation",
-                        link: "#",
-                        image: "/placeholder.svg?height=200&width=400&text=Technical+Documentation",
-                      },
-                      {
-                        title: "API Documentation Guide",
-                        description: "Best practices for documenting APIs and technical interfaces",
-                        link: "#",
-                        image: "/placeholder.svg?height=200&width=400&text=API+Documentation",
-                      },
-                      {
-                        title: "Technical Writing Style Guide",
-                        description: "Style guidelines for clear and concise technical writing",
-                        link: "#",
-                        image: "/placeholder.svg?height=200&width=400&text=Technical+Writing",
-                      },
-                    ]}
-                  />
+                  <ResearchMaterials category="technical" materials={technicalMaterials} />
                 </TabsContent>
                 <TabsContent value="general" className="mt-6">
-                  <ResearchMaterials
-                    category="general"
-                    materials={[
-                      {
-                        title: "Content Creation Strategies",
-                        description: "Effective strategies for creating engaging content",
-                        link: "#",
-                        image: "/placeholder.svg?height=200&width=400&text=Content+Creation",
-                      },
-                      {
-                        title: "Writing for Different Audiences",
-                        description: "Guide to adapting writing style for various audiences",
-                        link: "#",
-                        image: "/placeholder.svg?height=200&width=400&text=Writing+Audiences",
-                      },
-                      {
-                        title: "Editing and Proofreading Checklist",
-                        description: "Comprehensive checklist for polishing written content",
-                        link: "#",
-                        image: "/placeholder.svg?height=200&width=400&text=Editing+Proofreading",
-                      },
-                    ]}
-                  />
+                  <ResearchMaterials category="general" materials={generalMaterials} />
                 </TabsContent>
               </Tabs>
             </div>
@@ -248,12 +243,7 @@ export default function Home() {
             <div className="mx-auto grid max-w-5xl grid-cols-1 gap-6 py-12 lg:grid-cols-2">
               <Card className="overflow-hidden">
                 <div className="relative h-40">
-                  <Image
-                    src="/placeholder.svg?height=200&width=600&text=Contact+Babar+Ali"
-                    alt="Contact"
-                    fill
-                    className="object-cover"
-                  />
+                  <img src={CONTACT_IMAGE || "/placeholder.svg"} alt="Contact" className="h-full w-full object-cover" />
                 </div>
                 <CardHeader>
                   <CardTitle>Contact Information</CardTitle>

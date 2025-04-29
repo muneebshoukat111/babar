@@ -13,3 +13,4 @@ echo "Running Docker container..."
 docker run -d -p 3000:3000 --name babar-portfolio babar-portfolio
 
 echo "Container is now running. Access the website at http://localhost:3000"
+echo "To view logs: docker logs babar-portfolio"
