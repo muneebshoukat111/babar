@@ -31,6 +31,9 @@ COPY --from=builder /app/.next ./.next
 COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/package.json ./package.json
 
+# Make sure the public directory is properly copied
+RUN ls -la /app/public
+
 # Expose port
 EXPOSE 3000
 

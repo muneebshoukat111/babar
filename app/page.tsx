@@ -15,29 +15,29 @@ import FloatingAnimation from "@/components/floating-animation"
 import TypingAnimation from "@/components/typing-animation"
 import PulseAnimation from "@/components/pulse-animation"
 
-// Define static image paths
-const PROFILE_IMAGE = "/placeholder.svg?height=550&width=550&text=Babar+Ali"
-const CONTACT_IMAGE = "/placeholder.svg?height=200&width=600&text=Contact+Babar+Ali"
+// Define static image paths with absolute paths
+const PROFILE_IMAGE = "/images/profile.png"
+const CONTACT_IMAGE = "/images/contact.png"
 
-// Define research materials with static image paths
+// Define research materials with absolute image paths
 const academicMaterials = [
   {
     title: "Research Methodology Guide",
     description: "Comprehensive guide to research methodologies for academic projects",
     link: "#",
-    image: "/placeholder.svg?height=200&width=400&text=Research+Methodology",
+    image: "/images/research-methodology.png",
   },
   {
     title: "Academic Writing Standards",
     description: "Guidelines for academic writing across different disciplines",
     link: "#",
-    image: "/placeholder.svg?height=200&width=400&text=Academic+Writing",
+    image: "/images/academic-writing.png",
   },
   {
     title: "Data Analysis Techniques",
     description: "Overview of quantitative and qualitative data analysis methods",
     link: "#",
-    image: "/placeholder.svg?height=200&width=400&text=Data+Analysis",
+    image: "/images/data-analysis.png",
   },
 ]
 
@@ -46,19 +46,19 @@ const technicalMaterials = [
     title: "Technical Documentation Templates",
     description: "Templates for creating effective technical documentation",
     link: "#",
-    image: "/placeholder.svg?height=200&width=400&text=Technical+Documentation",
+    image: "/images/technical-documentation.png",
   },
   {
     title: "API Documentation Guide",
     description: "Best practices for documenting APIs and technical interfaces",
     link: "#",
-    image: "/placeholder.svg?height=200&width=400&text=API+Documentation",
+    image: "/images/api-documentation.png",
   },
   {
     title: "Technical Writing Style Guide",
     description: "Style guidelines for clear and concise technical writing",
     link: "#",
-    image: "/placeholder.svg?height=200&width=400&text=Technical+Writing",
+    image: "/images/technical-writing.png",
   },
 ]
 
@@ -67,19 +67,19 @@ const generalMaterials = [
     title: "Content Creation Strategies",
     description: "Effective strategies for creating engaging content",
     link: "#",
-    image: "/placeholder.svg?height=200&width=400&text=Content+Creation",
+    image: "/images/content-creation.png",
   },
   {
     title: "Writing for Different Audiences",
     description: "Guide to adapting writing style for various audiences",
     link: "#",
-    image: "/placeholder.svg?height=200&width=400&text=Writing+Audiences",
+    image: "/images/writing-audiences.png",
   },
   {
     title: "Editing and Proofreading Checklist",
     description: "Comprehensive checklist for polishing written content",
     link: "#",
-    image: "/placeholder.svg?height=200&width=400&text=Editing+Proofreading",
+    image: "/images/editing-proofreading.png",
   },
 ]
 
@@ -189,14 +189,7 @@ export default function Home() {
                 duration={6}
                 className="relative mx-auto aspect-square w-full max-w-[450px] overflow-hidden rounded-full border-8 border-background shadow-xl lg:order-last"
               >
-                <motion.img
-                  src={PROFILE_IMAGE || "/placeholder.svg"}
-                  alt="Babar Ali"
-                  className="h-full w-full object-cover"
-                  initial={{ scale: 1.2, rotate: -5 }}
-                  animate={{ scale: 1, rotate: 0 }}
-                  transition={{ duration: 1.5, ease: "easeOut" }}
-                />
+                <img src={PROFILE_IMAGE || "/placeholder.svg"} alt="Babar Ali" className="h-full w-full object-cover" />
                 <motion.div
                   className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-transparent"
                   initial={{ opacity: 0 }}
@@ -346,12 +339,10 @@ export default function Home() {
               <FadeIn direction="left">
                 <Card className="overflow-hidden">
                   <div className="relative h-40">
-                    <motion.img
+                    <img
                       src={CONTACT_IMAGE || "/placeholder.svg"}
                       alt="Contact"
                       className="h-full w-full object-cover"
-                      whileHover={{ scale: 1.05 }}
-                      transition={{ duration: 0.3 }}
                     />
                     <motion.div
                       className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-transparent"

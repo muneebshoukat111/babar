@@ -40,12 +40,10 @@ export default function ResearchMaterials({ category, materials }: ResearchMater
             transition={{ duration: 0.3 }}
           >
             <div className="relative h-40 w-full overflow-hidden">
-              <motion.img
+              <img
                 src={material.image || "/placeholder.svg"}
                 alt={material.title}
                 className="h-full w-full object-cover"
-                whileHover={{ scale: 1.1 }}
-                transition={{ duration: 0.5 }}
               />
               <motion.div
                 className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-transparent opacity-0"
