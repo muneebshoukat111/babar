@@ -12,21 +12,37 @@ interface ServiceCardProps {
 
 export default function ServiceCard({ icon, title, description }: ServiceCardProps) {
   return (
-    <Card className="flex flex-col items-center text-center overflow-hidden group">
-      <CardHeader className="pb-2">
+    <motion.div
+      whileHover={{
+        y: -10,
+        boxShadow: "0 10px 30px -15px rgba(0, 0, 0, 0.3)",
+        transition: { duration: 0.3 },
+      }}
+    >
+      <Card className="flex flex-col items-center text-center overflow-hidden group h-full">
+        <CardHeader className="pb-2">
+          <motion.div
+            className="mb-2 rounded-full bg-muted p-4 w-fit mx-auto"
+            whileHover={{
+              scale: 1.1,
+              rotate: [0, 5, -5, 0],
+              transition: { duration: 0.5 },
+            }}
+          >
+            {icon}
+          </motion.div>
+          <CardTitle className="text-xl">{title}</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <CardDescription className="text-base">{description}</CardDescription>
+        </CardContent>
         <motion.div
-          className="mb-2 rounded-full bg-muted p-4 w-fit mx-auto"
-          whileHover={{ scale: 1.1 }}
-          transition={{ type: "spring", stiffness: 400, damping: 10 }}
-        >
-          {icon}
-        </motion.div>
-        <CardTitle className="text-xl">{title}</CardTitle>
-      </CardHeader>
-      <CardContent>
-        <CardDescription className="text-base">{description}</CardDescription>
-      </CardContent>
-      <div className="h-1 w-0 bg-primary transition-all duration-300 group-hover:w-full" />
-    </Card>
+          className="h-1 w-0 bg-primary"
+          initial={{ width: 0 }}
+          whileHover={{ width: "100%" }}
+          transition={{ duration: 0.3 }}
+        />
+      </Card>
+    </motion.div>
   )
 }
